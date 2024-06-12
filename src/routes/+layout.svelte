@@ -1,5 +1,11 @@
 <script lang="ts">
 	import '../app.postcss';
+	// Floating UI for Popups
+	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
+	import { storePopup } from '@skeletonlabs/skeleton';
+	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+	import { initializeStores, Drawer } from '@skeletonlabs/skeleton';
+	initializeStores();
 
 	// Highlight JS
 	import hljs from 'highlight.js/lib/core';
@@ -16,10 +22,13 @@
 	hljs.registerLanguage('typescript', typescript);
 	storeHighlightJs.set(hljs);
 
-	// Floating UI for Popups
-	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
-	import { storePopup } from '@skeletonlabs/skeleton';
-	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+	import HarbourBar from '$lib/components/general/+HarbourBar.svelte';
 </script>
 
+<Drawer>
+	<div>
+		<h1>Test content</h1>
+	</div>
+</Drawer>
+<HarbourBar/>
 <slot />
