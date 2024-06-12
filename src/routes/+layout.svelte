@@ -4,7 +4,7 @@
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
-	import { initializeStores, Drawer } from '@skeletonlabs/skeleton';
+	import { initializeStores, Drawer, Toast } from '@skeletonlabs/skeleton';
 	initializeStores();
 
 	// Highlight JS
@@ -23,12 +23,12 @@
 	storeHighlightJs.set(hljs);
 
 	import HarbourBar from '$lib/components/general/+HarbourBar.svelte';
+	import HarbourDrawer from '$lib/components/general/+HarbourDrawer.svelte';
 </script>
 
-<Drawer>
-	<div>
-		<h1>Test content</h1>
-	</div>
+<HarbourBar/> <!-- Application toolbar -->
+<Drawer> <!-- Basic drawer with contents in component-->
+	<HarbourDrawer/>
 </Drawer>
-<HarbourBar/>
-<slot />
+<slot /> <!--Embed pages in this layout-->
+<Toast/> <!--Toast for simple alert messages-->

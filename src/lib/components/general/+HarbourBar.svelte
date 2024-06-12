@@ -1,21 +1,40 @@
 <script lang="ts">
-	import { AppBar, getDrawerStore, popup, type PopupSettings } from '@skeletonlabs/skeleton';
+	import {
+		AppBar,
+		getDrawerStore,
+		getToastStore,
+		popup,
+		type PopupSettings,
+		type ToastSettings
+	} from '@skeletonlabs/skeleton';
 
-	//Drawer setup
+	import Fa from 'svelte-fa';
+	import { faBars, faCaretDown, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
+	import CreateItemPopup from './+CreateItemPopup.svelte';
+
+	//Store setups
 	const drawerStore = getDrawerStore();
-	function drawerOpen():void{
-		drawerStore.open();
-	}
+	const toastStore = getToastStore();
+
 	//Popup setup
 	const createNewItem: PopupSettings = {
 		event: 'click',
 		target: 'createNewItem',
 		placement: 'bottom'
 	};
-	//icons
-	import Fa from 'svelte-fa';
-	import { faBars, faCaretDown, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
-	import CreateItemPopup from './+CreateItemPopup.svelte';
+	//Members
+	let searchVal = '';
+	//Methods
+	function drawerOpen(): void {
+		drawerStore.open();
+	}
+
+	function drawerSearch(): void {
+		const toast: ToastSettings = {
+			message: `this is a test toast and this was your search: ${searchVal}`
+		};
+		toastStore.trigger(toast);
+	}
 </script>
 
 <CreateItemPopup />
@@ -33,10 +52,10 @@
 			<Fa icon={faCaretDown} />
 		</button>
 		<div class="flex input-group input-group-divider grid-cols-[auto-1fr] h-9">
-			<input type="text" class="input" placeholder="Search..." />
-			<button type="button">
-				<Fa icon={faSearch} />
-			</button>
+				<input type="text" class="input" placeholder="Search..." bind:value={searchVal} on:change={drawerSearch}/>
+				<button type="button" on:click={drawerSearch}>
+					<Fa icon={faSearch} />
+				</button>
 		</div>
 	</svelte:fragment>
 </AppBar>
