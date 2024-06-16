@@ -4,6 +4,7 @@
 		getDrawerStore,
 		getToastStore,
 		popup,
+		type DrawerSettings,
 		type PopupSettings,
 		type ToastSettings
 	} from '@skeletonlabs/skeleton';
@@ -26,7 +27,13 @@
 	let searchVal = '';
 	//Methods
 	function drawerOpen(): void {
-		drawerStore.open();
+		const drawerSettings: DrawerSettings = {
+			id: 'mainDrawer',
+			width: 'w-3/12',
+			padding: 'p-4',
+			rounded: 'rounded-xl'
+		}
+		drawerStore.open(drawerSettings);
 	}
 
 	function drawerSearch(): void {
