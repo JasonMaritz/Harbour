@@ -4,7 +4,7 @@
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
-	import { initializeStores, Drawer, Toast } from '@skeletonlabs/skeleton';
+	import { initializeStores, Drawer, Toast, Modal } from '@skeletonlabs/skeleton';
 	initializeStores();
 
 	// Highlight JS
@@ -30,5 +30,6 @@
 <Drawer> <!-- Basic drawer with contents in component-->
 	<HarbourDrawer/>
 </Drawer>
+<Modal /> <!--Modal popup-->
 <slot /> <!--Embed pages in this layout-->
 <Toast/> <!--Toast for simple alert messages-->
