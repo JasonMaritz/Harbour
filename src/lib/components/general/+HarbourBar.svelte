@@ -51,7 +51,7 @@
 		<button type="button" class="btn-icon btn-variant-ghost" on:click={drawerOpen}>
 			<Fa icon={faBars} />
 		</button>
-		<h3 class="h3 px-3">Harbour</h3>
+		<a href="/"><h3 class="h3 px-3">Harbour</h3></a>
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
 		<button type="button" class="btn variant-ghost h-9" title="Add new" use:popup={createNewItem}>

@@ -26,10 +26,14 @@
 	import HarbourDrawer from '$lib/components/general/+HarbourDrawer.svelte';
 </script>
 
-<HarbourBar/> <!-- Application toolbar -->
 <Drawer> <!-- Basic drawer with contents in component-->
 	<HarbourDrawer/>
 </Drawer>
 <Modal /> <!--Modal popup-->
-<slot /> <!--Embed pages in this layout-->
+<div class="flex flex-col h-screen">
+	<HarbourBar/> <!-- Application toolbar -->
+	<slot /> <!--Embed pages in this layout-->
+</div>
+
+
 <Toast/> <!--Toast for simple alert messages-->

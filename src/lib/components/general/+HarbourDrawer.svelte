@@ -1,19 +1,35 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
+	import { menuLinks } from '$lib/links';
+	import { getDrawerStore } from '@skeletonlabs/skeleton';
+
+	$: mainLinks = menuLinks['mainDrawerLinks'];
+	$: utilityLinks = menuLinks['trailDrawerLinks'];
+
+	const drawerStore = getDrawerStore();
+
+	function closeDrawer(): void {
+		drawerStore.close();
+	}
 </script>
 
 <div class="flex flex-col space-y-2 m-8 h-fit">
-	<button type="button" class="btn variant-soft" on:click={ () => {goto('/issue');} }>
-		<span>Issues</span>
-	</button>
-	<button type="button" class="btn variant-soft" on:click={ () => {goto('/project');} }>
-		<span>Projects</span>
-	</button>
-	<button type="button" class="btn variant-soft" on:click={ () => {goto('/ideas');} }>
-		<span>Ideas</span>
-	</button>
-	<hr />
-	<button type="button" class=" btn variant-soft" on:click={ () => {goto('/settings');} } >
-		<span>Settings</span>
-	</button>
+		<nav class="list-nav">
+			<ul>
+				{#each mainLinks as link}
+					<li>
+						<a href={link.href} class="hover" on:click={closeDrawer}>{@html link.label}</a>
+					</li>
+				{/each}
+			</ul>
+		</nav>
+		<hr/>
+		<nav class="list-nav">
+			<ul>
+				{#each utilityLinks as link}
+					<li>
+						<a href={link.href} class="hover" on:click={closeDrawer}>{@html link.label}</a>
+					</li>
+				{/each}
+			</ul>
+		</nav>
 </div>
