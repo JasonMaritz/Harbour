@@ -48,7 +48,9 @@
     "@floating-ui/dom": "1.6.5",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "carta-md": "^4.2.1",
     "highlight.js": "11.9.0",
+    "sass": "^1.77.6",
     "svelte-fa": "^4.0.2"
   }
 }
